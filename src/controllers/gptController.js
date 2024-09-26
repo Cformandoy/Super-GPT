@@ -7,7 +7,7 @@ gptController.queryGPT = async (req, res) => {
     if (!messages) {
         return res.status(400).json({ error: 'Messages is required' });
     }
-    console.log('messages type', typeof messages);
+    console.log('messages', messages);
     if (typeof messages === 'string') {
         try {
             console.log('string messages', messages);
@@ -19,8 +19,6 @@ gptController.queryGPT = async (req, res) => {
     }
 
     try {
-        console.log('messages type 2', typeof messages);
-
         console.log('Sending Messages to GPT API', messages);
         const response = await gptService.sendPrompt(messages);
         res.json(response);
